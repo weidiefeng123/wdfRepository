@@ -8,9 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: XiaoAnApp
 
     steps:
     - uses: actions/checkout@v4
@@ -21,14 +18,19 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
     - name: Make gradlew executable
       run: chmod +x gradlew
+      working-directory: XiaoAnApp
 
     - name: Build Debug APK
-      run: ./gradlew assembleDebug -x lint --no-daemon
+      run: ./gradlew assembleDebug --no-daemon
+      working-directory: XiaoAnApp
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: XiaoAnApp-debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: XiaoAnApp/app/build/outputs/apk/debug/app-debug.apk
