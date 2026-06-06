@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D0D1A">
+
+    <!-- 顶部标题栏 -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="#1A1A2E"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="小安助手"
+            android:textColor="#E0E0FF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- 状态显示 -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="初始化中..."
+            android:textColor="#00FF88"
+            android:textSize="13sp"
+            android:maxWidth="260dp"
+            android:singleLine="true"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+
+    <!-- 对话内容区域 -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvMessages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#C8C8E8"
+            android:textSize="16sp"
+            android:lineSpacingMultiplier="1.4"
+            android:fontFamily="monospace"
+            android:padding="8dp" />
+
+    </ScrollView>
+
+    <!-- 底部控制栏 -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        android:background="#1A1A2E"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 麦克风状态图标 -->
+        <TextView
+            android:id="@+id/tvMicIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="🎤"
+            android:textSize="28sp"
+            android:gravity="center"
+            android:layout_marginEnd="16dp" />
+
+        <!-- 提示文字 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="说「小安小安」唤醒 · 然后直接说话"
+            android:textColor="#555577"
+            android:textSize="13sp" />
+
+        <!-- 清空按钮 -->
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="100dp"
+            android:layout_height="44dp"
+            android:text="清空记录"
+            android:textSize="13sp"
+            android:textColor="#AAAACC"
+            android:background="@drawable/btn_secondary_bg"
+            android:layout_marginEnd="12dp" />
+
+        <!-- 开始/停止按钮 -->
+        <Button
+            android:id="@+id/btnStartVoice"
+            android:layout_width="120dp"
+            android:layout_height="44dp"
+            android:text="开始说话"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_primary_bg" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
